@@ -32,11 +32,11 @@
  *********************/
 #define LED_SWITCH_1 32 //6th Pin from 39 side
 #define LED_SWITCH_2 33 //5th Pin from 39 side
-#define LED_SWITCH_3 21 //11th Pin from 39 side
-#define LED_SWITCH_4 12 //9th Pin from 39 side
-#define LED_SWITCH_5 4  //5th Pin from 2 side
-#define LED_SWITCH_6 2  //6th Pin from 2 side
-#define LED_SWITCH_7 27 //5th Pin from 1 side
+//#define LED_SWITCH_3 21 //11th Pin from 39 side
+#define LED_SWITCH_3 12 //9th Pin from 39 side
+#define LED_SWITCH_4 4  //5th Pin from 2 side
+#define LED_SWITCH_5 2  //6th Pin from 2 side
+#define LED_SWITCH_6 27 //7th Pin from 39 side
 
 
 /**********************
@@ -101,13 +101,13 @@ static void switch_event_6(lv_obj_t * obj, lv_event_t event){
     }
 } 
 
-static void switch_event_7(lv_obj_t * obj, lv_event_t event){
-    switch(event) {
-        case LV_EVENT_VALUE_CHANGED: 
-            LED_SWITCH_7_STATE = lv_switch_get_state(obj);
-            break;
-    }
-}
+//static void switch_event_7(lv_obj_t * obj, lv_event_t event){
+//    switch(event) {
+//        case LV_EVENT_VALUE_CHANGED: 
+//            LED_SWITCH_7_STATE = lv_switch_get_state(obj);
+//            break;
+//    }
+//}
 //******************************************************************//
 
 /**********************
@@ -154,8 +154,8 @@ void app_main() {
     gpio_reset_pin(LED_SWITCH_6);
     gpio_set_direction(LED_SWITCH_6, GPIO_MODE_OUTPUT);     // Pin 2 as output
 
-    gpio_reset_pin(LED_SWITCH_7);
-    gpio_set_direction(LED_SWITCH_7, GPIO_MODE_OUTPUT);     // Pin 27 as output
+    //gpio_reset_pin(LED_SWITCH_7);
+    //gpio_set_direction(LED_SWITCH_7, GPIO_MODE_OUTPUT);     // Pin 27 as output
 
     while(1) {
         // Turning On/Off each output for Switches in GUI
@@ -165,7 +165,7 @@ void app_main() {
         blink(LED_SWITCH_4_STATE, LED_SWITCH_4);
         blink(LED_SWITCH_5_STATE, LED_SWITCH_5);
         blink(LED_SWITCH_6_STATE, LED_SWITCH_6);
-        blink(LED_SWITCH_7_STATE, LED_SWITCH_7);
+        //blink(LED_SWITCH_7_STATE, LED_SWITCH_7);
         //*********************************************************//
     }
 }
@@ -313,9 +313,9 @@ static void basic_layout(void){
     lv_obj_set_pos(sw6, 168, 190);
     lv_obj_set_size(sw6, 60, 35);
 
-    lv_obj_t *sw7 = lv_switch_create(lv_scr_act(), NULL);
-    lv_obj_set_pos(sw7, 91, 254);
-    lv_obj_set_size(sw7, 60, 35);
+    //lv_obj_t *sw7 = lv_switch_create(lv_scr_act(), NULL);
+    //lv_obj_set_pos(sw7, 91, 254);
+    //lv_obj_set_size(sw7, 60, 35);
 
     //lv_obj_t *sw8 = lv_switch_create(lv_scr_act(), NULL);
     //lv_obj_set_pos(sw8, 134, 254);
@@ -362,8 +362,8 @@ static void basic_layout(void){
      lv_obj_set_style_local_bg_color(sw6,LV_SWITCH_PART_BG, LV_STATE_DEFAULT, LV_COLOR_RED);
     lv_obj_set_style_local_bg_color(sw6,LV_SWITCH_PART_INDIC, LV_STATE_CHECKED, LV_COLOR_GREEN);
 
-    lv_obj_set_style_local_bg_color(sw7,LV_SWITCH_PART_BG, LV_STATE_DEFAULT, LV_COLOR_RED);
-    lv_obj_set_style_local_bg_color(sw7,LV_SWITCH_PART_INDIC, LV_STATE_CHECKED, LV_COLOR_GREEN);
+    //lv_obj_set_style_local_bg_color(sw7,LV_SWITCH_PART_BG, LV_STATE_DEFAULT, LV_COLOR_RED);
+    //lv_obj_set_style_local_bg_color(sw7,LV_SWITCH_PART_INDIC, LV_STATE_CHECKED, LV_COLOR_GREEN);
 
     //lv_obj_set_style_local_bg_color(sw8,LV_SWITCH_PART_BG, LV_STATE_DEFAULT, LV_COLOR_RED);
     //lv_obj_set_style_local_bg_color(sw8,LV_SWITCH_PART_INDIC, LV_STATE_CHECKED, LV_COLOR_GREEN);
@@ -376,7 +376,7 @@ static void basic_layout(void){
     lv_obj_set_event_cb(sw4, switch_event_4);
     lv_obj_set_event_cb(sw5, switch_event_5);
     lv_obj_set_event_cb(sw6, switch_event_6);
-    lv_obj_set_event_cb(sw7, switch_event_7);
+    //lv_obj_set_event_cb(sw7, switch_event_7);
     //lv_obj_set_event_cb(sw8, switch_event_8`);
     
 }
